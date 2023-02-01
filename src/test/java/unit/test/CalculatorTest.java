@@ -1,6 +1,7 @@
 package unit.test;
 
 import org.junit.jupiter.api.*;
+import org.opentest4j.TestAbortedException;
 import unit.test.generator.SimpleDisplayNameGenerator;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -60,5 +61,17 @@ public class CalculatorTest {
     @Disabled
     public void testComingSoon(){
         //TODO
+    }
+
+    @Test
+    public void testAborted(){
+        var profile = System.getenv("PROFILE");
+        System.out.println(profile);
+
+        if(!"DEV".equals(profile)){
+            throw new TestAbortedException("Test dibatalkan karena bukan dev");
+        }
+
+        // unit test untuk dev
     }
 }
