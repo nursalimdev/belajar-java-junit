@@ -5,6 +5,7 @@ import org.opentest4j.TestAbortedException;
 import unit.test.generator.SimpleDisplayNameGenerator;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assumptions.*;
 
 //@DisplayName("Test untuk Calculator")
 @DisplayNameGeneration(SimpleDisplayNameGenerator.class)
@@ -73,5 +74,12 @@ public class CalculatorTest {
         }
 
         // unit test untuk dev
+    }
+
+    @Test
+    public void testAssumptions(){
+        Assumptions.assumeTrue("PROD".equals(System.getenv("PROFILE")));
+
+        // unit test dilanjukan jika environtment nya DEV
     }
 }
